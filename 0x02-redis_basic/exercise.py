@@ -4,7 +4,7 @@ function that writes strings to redis
 """
 import redis
 import uuid
-
+from typing import Union
 
 class Cache:
     """ stores an instance of redis client """
@@ -13,7 +13,7 @@ class Cache:
 
         self._redis.flushdb()
 
-    def store(self, data: str) -> str:
+    def store(self, data: Union[str, bytes, int, float]) -> str:
         """ generates random key """
         key = str(uuid.uuid4())
 
